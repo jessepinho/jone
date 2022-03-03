@@ -4,6 +4,7 @@ body {
   background-image: url(./still.jpg);
   background-size: cover;
   background-position: 75% center;
+  background-attachment: fixed;
 
   color: rgba(255, 255, 255, 0.7);
   font-family: "Source Code Pro", sans-serif;
@@ -38,11 +39,16 @@ body {
 
 .credits {
   max-width: min(100%, 600px);
+  width: 100%;
+
+  position: absolute;
+  top: calc(100vh - 100px);
 }
 
 @media only screen and (min-width: 600px) {
   .credits {
     max-width: min(100%, 400px);
+    position: static;
   }
 }
 
@@ -62,7 +68,14 @@ html {
 
 .logo {
   width: min(100%, 600px);
-  flex-grow: 1;
+  position: fixed;
+}
+
+@media only screen and (min-width: 600px) {
+  .logo {
+    flex-grow: 1;
+    position: static;
+  }
 }
 
 .logoImage {
@@ -72,5 +85,10 @@ html {
 .main {
   display: flex;
   flex-direction: column;
-  height: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .main {
+    height: 100%;
+  }
 }
