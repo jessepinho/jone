@@ -45,7 +45,8 @@
     <figure class="logo">
       <img src="./logo.svg" alt="The Jone logo" class="logoImage" />
     </figure>
-    <section class="credits">
+
+    <section id="scrollContent" class="credits">
       <div class="creditItem">
         <div class="credit">written &amp; directed by</div>
         <div class="creditName">Jesse Pinho</div>
@@ -85,7 +86,62 @@
         </div>
       </div>
     </section>
+
+    <div class="scrollOverlay" id="scrollOverlay"></div>
   </main>
+
+  <script>
+    (function () {
+      // Settings
+      var MAX_OPACITY = .6
+      var RATIO_FOR_MAX_OPACITY = .75
+      var MIN_WIDTH_TO_DISABLE_SCROLL_OVERLAY = 600
+
+      var scrollContent = document.getElementById('scrollContent')
+      var scrollOverlay = document.getElementById('scrollOverlay')
+      scrollOverlay.style.display = 'block'
+      scrollOverlay.style.opacity = 0
+
+      var currentTopForMaxOpacity, difference, enable
+
+      function adjustToViewportSize() {
+        var startTop = scrollContent.getBoundingClientRect().top
+        currentTopForMaxOpacity = startTop * RATIO_FOR_MAX_OPACITY
+        difference = startTop - currentTopForMaxOpacity
+        if (window.innerWidth >= MIN_WIDTH_TO_DISABLE_SCROLL_OVERLAY) {
+          enable = false
+        } else {
+          enable = true
+        }
+      }
+
+      function setOpacity() {
+        if (!enable && scrollOverlay.style.opacity) {
+          scrollOverlay.style.opacity = 0
+          return
+        }
+        var currentTop = scrollContent.getBoundingClientRect().top
+        var ratio = (currentTop - currentTopForMaxOpacity) / difference
+        var newOpacity
+
+        if (ratio >= 1) {
+          newOpacity = 0
+        } else if (ratio <= 0) {
+          newOpacity = MAX_OPACITY
+        } else {
+          newOpacity = MAX_OPACITY - (MAX_OPACITY * ratio)
+        }
+
+        scrollOverlay.style.opacity = newOpacity
+      }
+
+      window.addEventListener('scroll', setOpacity)
+      window.addEventListener('resize', adjustToViewportSize)
+
+      setOpacity()
+      adjustToViewportSize()
+    })()
+  </script>
 </body>
 
 </html>
