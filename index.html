@@ -108,7 +108,12 @@
       var currentTopForMaxOpacity, difference, enable
 
       function adjustToViewportSize() {
-        scrollContainer.scrollTop = 0
+        // This is triggered by when the bottom bar on iOS Safari disappears on
+        // scroll, which breaks scrolling. Fix if possible. (While this is
+        // commented out, a user who resizes a window vertically will have
+        // issues with the fading.)
+        // scrollContainer.scrollTop = 0
+
         var startTop = scrollContent.getBoundingClientRect().top
         currentTopForMaxOpacity = startTop * RATIO_FOR_MAX_OPACITY
         difference = startTop - currentTopForMaxOpacity
