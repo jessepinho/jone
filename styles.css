@@ -37,7 +37,13 @@ body {
 }
 
 .creditsSmall {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.35);
+}
+
+@media only screen and (min-width: 768px) {
+  .creditsSmall {
+    color: rgba(0, 0, 0, 0.4);
+  }
 }
 
 html {
