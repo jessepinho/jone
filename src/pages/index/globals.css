@@ -1,0 +1,25 @@
+body {
+  background-image: url(./still.jpg);
+  background-size: cover;
+  background-position: 75% center;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Source Code Pro", sans-serif;
+
+  height: 100%;
+}
+
+@media only screen and (min-width: 980px) {
+  body {
+    background-position: center center;
+  }
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}

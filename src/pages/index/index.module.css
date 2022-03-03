@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logo {
+  width: max(40%, 400px);
+  flex-grow: 1;
+}
+
+.logoImage {
+  opacity: 0.291;
+}
+
+.credits {
+  max-width: max(40%, 400px);
+}
+
+.creditItem {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.creditName {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.creditNames {
+  text-transform: uppercase;
+}
