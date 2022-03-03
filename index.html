@@ -146,7 +146,9 @@
       }
 
       scrollContainer.addEventListener('scroll', setOpacity)
-      window.addEventListener('resize', adjustToViewportSize)
+
+      // disable for now, since it's not working well on iOS Safari
+      // window.addEventListener('resize', adjustToViewportSize)
 
       setOpacity()
       adjustToViewportSize()
