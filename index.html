@@ -46,114 +46,47 @@
       <img src="./logo.svg" alt="The Jone logo" class="logoImage" />
     </figure>
 
-    <div id="scrollContainer" class="scrollContainer">
-      <section id="scrollContent" class="credits">
-        <div class="creditItem">
-          <div class="credit">written &amp; directed by</div>
-          <div class="creditName">Jesse Pinho</div>
+    <section class="credits">
+      <div class="creditItem">
+        <div class="credit">written &amp; directed by</div>
+        <div class="creditName">Jesse Pinho</div>
+      </div>
+
+      <div class="creditItem">
+        <div class="credit">produced &amp; edited by</div>
+        <div class="creditName">George Rodriguez</div>
+      </div>
+
+      <div class="creditItem">
+        <div class="credit">
+          cinematography &amp; production design by
+        </div>
+        <div class="creditName">Joyzel</div>
+      </div>
+
+      <div class="creditItem">
+        <div class="creditNames">
+          Katy Corbus &bull; Henry Hetz &bull; Sarah Keene
+        </div>
+      </div>
+
+      <div class="creditItem">
+        <div class="creditName">COMING MAY 2022</div>
+      </div>
+
+      <div class="creditItem creditsSmall">
+        <div>
+          original music by
+          <span class="creditNames">Monika Mia</span>
         </div>
 
-        <div class="creditItem">
-          <div class="credit">produced &amp; edited by</div>
-          <div class="creditName">George Rodriguez</div>
+        <div>
+          hair &amp; makeup by
+          <span class="creditNames">Talia Ranier</span>
         </div>
-
-        <div class="creditItem">
-          <div class="credit">
-            cinematography &amp; production design by
-          </div>
-          <div class="creditName">Joyzel</div>
-        </div>
-
-        <div class="creditItem">
-          <div class="creditNames">
-            Katy Corbus &bull; Henry Hetz &bull; Sarah Keene
-          </div>
-        </div>
-
-        <div class="creditItem">
-          <div class="creditName">COMING MAY 2022</div>
-        </div>
-
-        <div class="creditItem creditsSmall">
-          <div>
-            original music by
-            <span class="creditNames">Monika Mia</span>
-          </div>
-
-          <div>
-            hair &amp; makeup by
-            <span class="creditNames">Talia Ranier</span>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="scrollOverlay" id="scrollOverlay"></div>
+      </div>
+    </section>
   </main>
-
-  <script>
-    (function () {
-      // Settings
-      var MAX_OPACITY = .6
-      var RATIO_FOR_MAX_OPACITY = .75
-      var MIN_WIDTH_TO_DISABLE_SCROLL_OVERLAY = 600
-
-      var scrollContainer = document.getElementById('scrollContainer')
-      var scrollContent = document.getElementById('scrollContent')
-      var scrollOverlay = document.getElementById('scrollOverlay')
-      scrollOverlay.style.display = 'block'
-      scrollOverlay.style.opacity = 0
-
-      var currentTopForMaxOpacity, difference, enable
-
-      function adjustToViewportSize() {
-        // This is triggered by when the bottom bar on iOS Safari disappears on
-        // scroll, which breaks scrolling. Fix if possible. (While this is
-        // commented out, a user who resizes a window vertically will have
-        // issues with the fading.)
-        // scrollContainer.scrollTop = 0
-
-        var startTop = scrollContent.getBoundingClientRect().top
-        currentTopForMaxOpacity = startTop * RATIO_FOR_MAX_OPACITY
-        difference = startTop - currentTopForMaxOpacity
-        if (window.innerWidth >= MIN_WIDTH_TO_DISABLE_SCROLL_OVERLAY) {
-          enable = false
-        } else {
-          enable = true
-        }
-        setOpacity()
-      }
-
-      function setOpacity() {
-        if (!enable && scrollOverlay.style.opacity) {
-          scrollOverlay.style.opacity = 0
-          return
-        }
-        var currentTop = scrollContent.getBoundingClientRect().top
-        var ratio = (currentTop - currentTopForMaxOpacity) / difference
-        var newOpacity
-
-        if (ratio >= 1) {
-          newOpacity = 0
-        } else if (ratio <= 0) {
-          newOpacity = MAX_OPACITY
-        } else {
-          newOpacity = MAX_OPACITY - (MAX_OPACITY * ratio)
-        }
-
-        scrollOverlay.style.opacity = newOpacity
-      }
-
-      scrollContainer.addEventListener('scroll', setOpacity)
-
-      // disable for now, since it's not working well on iOS Safari
-      // window.addEventListener('resize', adjustToViewportSize)
-
-      setOpacity()
-      adjustToViewportSize()
-    })()
-  </script>
 </body>
 
 </html>

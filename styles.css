@@ -5,7 +5,6 @@ body {
   font-family: "Source Code Pro", sans-serif;
 
   height: 100%;
-  overflow: hidden;
 }
 
 .credit {
@@ -31,14 +30,11 @@ body {
   max-width: min(100%, 600px);
   width: 100%;
 
-  position: absolute;
-  margin-top: calc(100vh - 100px);
-  z-index: 2;
+  margin-top: 100vh;
 }
 
 @media only screen and (min-width: 600px) {
   .credits {
-    position: static;
     margin-top: 0;
     max-width: min(100%, 400px);
   }
@@ -89,37 +85,4 @@ html {
   .main {
     overflow: auto;
   }
-}
-
-.scrollContainer {
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  overflow: auto;
-  position: absolute;
-  z-index: 2;
-}
-
-@media only screen and (min-width: 600px) {
-  .scrollContainer {
-    position: static;
-    overflow: visible;
-    height: auto;
-    width: auto;
-  }
-}
-
-.scrollOverlay {
-  background: black;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  display: none;
 }
